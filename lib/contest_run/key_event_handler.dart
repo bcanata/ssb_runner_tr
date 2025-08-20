@@ -94,13 +94,13 @@ class KeyEventHandler {
 
 enum OperationEvent {
   cq(btnText: 'CQ'),
-  exch(btnText: 'EXCH'),
-  tu(btnText: 'TU'),
-  myCall(btnText: '<my>'),
-  hisCall(btnText: '<his>'),
-  b4(btnText: 'B4'),
-  agn(btnText: 'AGN'),
-  nil(btnText: 'NIL'),
+  exch(btnText: 'TAKS'),
+  tu(btnText: 'TŞK'),
+  myCall(btnText: '<ben>'),
+  hisCall(btnText: '<o>'),
+  b4(btnText: 'ÖNC'),
+  agn(btnText: 'TKR'),
+  nil(btnText: 'YOK'),
   submit(btnText: ''),
   cancel(btnText: ''),
   hisCallAndMyExchange(btnText: '');

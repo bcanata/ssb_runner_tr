@@ -1,168 +1,168 @@
-# SSB Contest Runner 第一版
+# SSB Contest Runner Birinci Sürüm
 
-参考 Morese Runner 实现最基础的功能
+Morse Runner'dan esinlenerek en temel işlevleri uygular
 
-## 需求要点
+## Gereksinimler
 
-- 显示当前比赛记录的所有通联信息
-  - 记录的呼号
+- Mevcut yarışma kaydının tüm iletişim bilgilerini görüntüle
+  - Kayıtlı çağrı işareti
   - RST
-  - Exchange
-  - 正确情况
+  - Takasiye (Exchange)
+  - Doğruluk durumu
 
-- 显示当前比赛模拟运行的时间
+- Mevcut yarışma simülasyonunun çalışma süresini görüntüle
 
-- 显示当前比赛模拟的通联统计
-  - Raw
-    - 通联数量
-    - 系数数量
-    - 获得的分数
-  - Verified
-    - 通联数量
-    - 系数数量
-    - 获得的分数
+- Mevcut yarışma simülasyonunun iletişim istatistiklerini görüntüle
+  - Ham
+    - İletişim sayısı
+    - Çarpan sayısı
+    - Elde edilen puan
+  - Doğrulanmış
+    - İletişim sayısı
+    - Çarpan sayısı
+    - Elde edilen puan
 
-- 显示当前的 QSO 速度
-  - 单位为 QSO/小时
+- Mevcut QSO hızını görüntüle
+  - Birim QSO/saat
 
-- 基础配置
-  - 配置主叫呼号
-  - 配置语音播放的速度（按照等级配置，配置越高的速度越快）
-  - 配置一次比赛的总时长（分钟）
-  - 目前仅支持 CQ WPX，后续再增加支持的比赛种类
+- Temel yapılandırma
+  - Ana çağrı işaretini yapılandır
+  - Ses oynatma hızını yapılandır (seviye bazında yapılandırma, yapılandırma ne kadar yüksekse hız o kadar hızlı)
+  - Bir yarışmanın toplam süresini yapılandır (dakika)
+  - Şu anda yalnızca CQ WPX destekleniyor, gelecekte desteklenen yarışma türleri artırılacak
 
-- 比赛控制
-  - 开始比赛
-  - 结束比赛
+- Yarışma kontrolü
+  - Yarışmayı başlat
+  - Yarışmayı bitir
 
-- 通联记录
-  - 输入呼号
-  - 输入 RST（自动输入 59）
-  - 输入 Exchange
-  - 快捷键
-    - 参考 N1MM+，F1-F8 分别对应不同功能
+- İletişim kaydı
+  - Çağrı işareti gir
+  - RST gir (otomatik olarak 59 girer)
+  - Takasiye gir
+  - Kısayollar
+    - N1MM+'a referans, F1-F8 sırasıyla farklı işlevlere karşılık gelir
 
-- 窗口大小
-  - 窗口大小固定为 1280x720 dp
+- Pencere boyutu
+  - Pencere boyutu 1280x720 dp olarak sabitlenmiştir
 
-## 比赛流程
+## Yarışma Akışı
 
-![比赛流程状态机](https://github.com/user-attachments/assets/c43f8fdc-fb66-4ef2-8dde-17385545a607)
+![Yarışma Akışı Durum Makinesi](https://github.com/user-attachments/assets/c43f8fdc-fb66-4ef2-8dde-17385545a607)
 
-超时时间定为 10s
+Zaman aşımı süresi 10 saniye olarak belirlendi
 
-F1-F8 按键除了状态流转外，都需要执行对应的语音播放功能
+F1-F8 tuşları durum geçişine ek olarak, ilgili ses oynatma işlevini de yürütmelidir
 
-### 不涉及状态流转的按键指令
+### Durum geçişi içermeyen tuş komutları
 
-- 空格键：键盘光标在 CALL 和 Exchange 输入框之间跳转
-- Tab 键：键盘光标跳转到下一个输入框
-- Shift+Tab 键：键盘光标跳转到上一个输入框
-- 分号按键：播放 F5+F2 的语音
+- Boşluk tuşu: Klavye imleci CALL ve Exchange giriş kutuları arasında geçiş yapar
+- Tab tuşu: Klavye imleci bir sonraki giriş kutusuna atlar
+- Shift+Tab tuşu: Klavye imleci bir önceki giriş kutusuna atlar
+- Noktalı virgül tuşu: F5+F2 sesini oynatır
 
 
-## 界面原型
+## Arayüz Prototipi
 
-![界面原型](https://github.com/user-attachments/assets/eb906032-c1f8-464c-a883-cdda02f58c9b)
+![Arayüz Prototipi](https://github.com/user-attachments/assets/eb906032-c1f8-464c-a883-cdda02f58c9b)
 
-## 交互要点
+## Etkileşim Noktaları
 
-### 显示当前比赛记录的所有通联信息
+### Mevcut yarışma kaydının tüm iletişim bilgilerini görüntüle
 
-通联记录显示区域包括 Call、RST、Exchange
+İletişim kayıt görüntüleme alanı Call, RST, Exchange içerir
 
-- 以比赛开始的时间为 UTC 00:00:00
-- 通联记录完全正确时，用黑色显示，Corrections 区域为空
-- 当通联记录有错误部分时，对应错误部分用红色显示，Corrections 区域显示对应正确的信息
-- Corrections 区域显示顺序为
+- Yarışmanın başlama zamanını UTC 00:00:00 olarak al
+- İletişim kaydı tamamen doğru olduğunda siyah renkte görüntüle, Corrections alanı boş
+- İletişim kaydında hatalı kısımlar olduğunda, karşılık gelen hatalı kısımları kırmızı renkte görüntüle, Corrections alanında karşılık gelen doğru bilgileri göster
+- Corrections alanı görüntüleme sırası
   1. Call
   2. RST
   3. Exchange
 
-### 显示当前比赛模拟运行的时间
+### Mevcut yarışma simülasyonunun çalışma süresini görüntüle
 
-当前比赛模拟运行的时间使用 `HH:MM:SS` 显示
+Mevcut yarışma simülasyonunun çalışma süresi `HH:MM:SS` formatında görüntülenir
 
-### 显示当前比赛模拟的通联统计
+### Mevcut yarışma simülasyonunun iletişim istatistiklerini görüntüle
 
-根据不同的比赛规则，计算以下内容：
+Farklı yarışma kurallarına göre aşağıdaki içerikleri hesapla:
 
-- 通联数量
-- 系数个数
-- 分数统计
+- İletişim sayısı
+- Çarpan sayısı
+- Puan istatistikleri
 
-通联统计分为 Raw 和 Verified 两部分
+İletişim istatistikleri Ham ve Doğrulanmış olmak üzere iki bölüme ayrılır
 
-Raw 不考虑用户通联记录的正确情况，按照用户的通联记录全部都是正确的进行上述内容的计算
+Ham, kullanıcının iletişim kayıtlarının doğruluğunu dikkate almaz, kullanıcının iletişim kayıtlarının tamamının doğru olduğunu varsayarak yukarıdaki içeriklerin hesaplanmasını yapar
 
-Verified 则严格按照比赛的规则进行上述部分内容的计算
+Doğrulanmış ise yarışma kurallarına sıkı sıkıya uyarak yukarıdaki bölüm içeriklerinin hesaplanmasını yapar
 
-### 基础配置
+### Temel yapılandırma
 
-- 配置主叫呼号
-  - 主叫呼号输入框仅能输入呼号相关的内容
+- Ana çağrı işaretini yapılandır
+  - Ana çağrı işareti giriş kutusu yalnızca çağrı işareti ile ilgili içeriği girebilir
 
-- 配置语音播放的速度（按照等级配置，配置越高的速度越快）
-  - 可以做成一个下拉选择框
+- Ses oynatma hızını yapılandır (seviye bazında yapılandırma, yapılandırma ne kadar yüksekse hız o kadar hızlı)
+  - Açılır seçim kutusu olarak yapılabilir
 
-- 配置一次比赛的总时长（分钟）
-  - 输入框，只能输入数字
+- Bir yarışmanın toplam süresini yapılandır (dakika)
+  - Giriş kutusu, yalnızca sayı girebilir
 
-- 配置语音播放模式
-  - 下拉选择框，本版本禁用
-  - 目前仅支持 Single Call，即单呼号模式
+- Ses oynatma modunu yapılandır
+  - Açılır seçim kutusu, bu sürümde devre dışı
+  - Şu anda yalnızca Single Call, yani tek çağrı işareti modu destekleniyor
 
-- 配置当前需要模拟的比赛
-  - 下拉选择框，本版本禁用
-  - 目前仅支持 CQ WPX，后续再增加支持的比赛种类
+- Mevcut simüle edilecek yarışmayı yapılandır
+  - Açılır seçim kutusu, bu sürümde devre dışı
+  - Şu anda yalnızca CQ WPX destekleniyor, gelecekte desteklenen yarışma türleri artırılacak
 
-### 比赛控制
+### Yarışma kontrolü
 
-- 开始比赛
-  - 点击 `RUN` 按钮开始比赛
-  - 此时 `RUN` 按钮变成 `STOP`
+- Yarışmayı başlat
+  - `BAŞLAT` düğmesine tıklayarak yarışmayı başlat
+  - Bu sırada `BAŞLAT` düğmesi `DURDUR` olur
 
-- 结束比赛
-  - 点击 `STOP` 按钮结束比赛
-  - 此时 `STOP` 按钮变成 `RUN`
+- Yarışmayı bitir
+  - `DURDUR` düğmesine tıklayarak yarışmayı bitir
+  - Bu sırada `DURDUR` düğmesi `BAŞLAT` olur
 
-- 比赛时间到自动结束
-  - 当比赛时间到时，自动结束比赛
+- Yarışma süresi dolduğunda otomatik olarak biter
+  - Yarışma süresi dolduğunda otomatik olarak yarışma biter
 
-### 通联记录
+### İletişim kaydı
 
-- 输入呼号
-  - 呼号输入框只能输入呼号相关的内容
-
-```
-呼号相关的内容包括以下部分：[字母、数字、/]
-其中，字母要自动转为大写
-```
-
-- 输入 RST（自动输入 59）
-  - 由于是 SSB，只能输入两位数字
-
-- 输入 Exchange
-  - 根据不同的比赛，对 Exchange 的可输入内容进行限制
-  - 目前仅支持 CQ WPX，仅支持输入数字
-
-- 快捷键
-  - 参考 N1MM+，F1-F8 分别对应不同功能
-  - 可以通过鼠标点击触发功能，也可以按 F1-F8 键触发功能
-
-### 窗口大小
-
-- 目前电脑端窗口大小固定为 1280x720 px
-- 不允许改变窗口大小
-
-### QSO 速度
-
-按照最近 5 个的 QSO 的平均速度计算为当前 QSO 速度
-
-如果总 QSO 数量不足 5 个，则按照总 QSO 的平均速度计算为当前的 QSO 速度
+- Çağrı işareti gir
+  - Çağrı işareti giriş kutusu yalnızca çağrı işareti ile ilgili içeriği girebilir
 
 ```
-平均速度 = QSO 花费的总时间 / QSO 的个数，单位为 QSO个数/分
+Çağrı işareti ile ilgili içerik aşağıdaki bölümleri içerir: [harf, sayı, /]
+Bunlar içinde harfler otomatik olarak büyük harfe dönüştürülür
+```
 
-显示速度 = 平均速度 * 60
+- RST gir (otomatik olarak 59 girer)
+  - SSB olduğu için yalnızca iki haneli sayı girebilir
+
+- Takasiye gir
+  - Farklı yarışmalara göre Exchange'in girebileceği içeriği sınırla
+  - Şu anda yalnızca CQ WPX destekleniyor, yalnızca sayı girişi destekleniyor
+
+- Kısayollar
+  - N1MM+'a referans, F1-F8 sırasıyla farklı işlevlere karşılık gelir
+  - Fare tıklayarak işlevi tetikleyebilir, aynı zamanda F1-F8 tuşlarına basarak da işlevi tetikleyebilir
+
+### Pencere boyutu
+
+- Şu anda bilgisayar ucu pencere boyutu 1280x720 px olarak sabitlenmiştir
+- Pencere boyutunu değiştirmeye izin verilmez
+
+### QSO hızı
+
+En son 5 QSO'nun ortalama hızına göre mevcut QSO hızı olarak hesapla
+
+Toplam QSO sayısı 5'ten az ise, toplam QSO'nun ortalama hızına göre mevcut QSO hızı olarak hesapla
+
+```
+Ortalama hız = QSO'nun harcadığı toplam süre / QSO sayısı, birim QSO sayısı/dakika
+
+Görüntüleme hızı = Ortalama hız * 60
 ```
