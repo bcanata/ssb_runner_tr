@@ -28,17 +28,17 @@ class QsoRecordTable extends StatelessWidget {
                     child: Row(children: [Text('UTC', style: textStyle)]),
                   ),
                   Expanded(
-                    child: Row(children: [Text('Call', style: textStyle)]),
+                    child: Row(children: [Text('Çağrı', style: textStyle)]),
                   ),
                   Expanded(
-                    child: Row(children: [Text('Rst', style: textStyle)]),
+                    child: Row(children: [Text('RST', style: textStyle)]),
                   ),
                   Expanded(
-                    child: Row(children: [Text('Exchange', style: textStyle)]),
+                    child: Row(children: [Text('Takasiye', style: textStyle)]),
                   ),
                   Expanded(
                     child: Row(
-                      children: [Text('Corrections', style: textStyle)],
+                      children: [Text('Düzeltmeler', style: textStyle)],
                     ),
                   ),
                 ],

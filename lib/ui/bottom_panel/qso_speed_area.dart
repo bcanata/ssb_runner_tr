@@ -20,7 +20,7 @@ class QsoSpeedArea extends StatelessWidget {
 class _QsoRecordSpeedCubit extends Cubit<String> {
   final ContestManager _contestManager;
 
-  static const unit = 'QSOs/h';
+  static const unit = 'QSO/s';
 
   _QsoRecordSpeedCubit({required ContestManager contestManager})
     : _contestManager = contestManager,
@@ -64,7 +64,7 @@ class _QsoRecordSpeed extends StatelessWidget {
           Positioned(
             top: 6,
             left: 16,
-            child: Text('QSO Records', style: theme.textTheme.titleMedium),
+            child: Text('QSO Kayıtları', style: theme.textTheme.titleMedium),
           ),
 
           Positioned(
@@ -136,11 +136,11 @@ class _RunBtnCubit extends Cubit<bool> {
 
   String _checkSettingComplete() {
     if (_appSettings.stationCallsign.isEmpty) {
-      return 'Please set station callsign';
+      return 'Lütfen istasyon çağrı işaretini ayarlayın';
     }
 
     if (_appSettings.contestDuration <= 0) {
-      return 'Duration must be set and greater than 0';
+      return 'Süre ayarlanmalı ve 0\'dan büyük olmalıdır';
     }
 
     return '';
@@ -187,7 +187,7 @@ class _RunBtn extends StatelessWidget {
                       context.read<_RunBtnCubit>().toggleContestRunning();
                     },
                     child: Text(
-                      isContestRunning ? 'STOP' : 'RUN',
+                      isContestRunning ? 'DURDUR' : 'BAŞLAT',
                       style: theme.primaryTextTheme.headlineSmall,
                     ),
                   );

@@ -39,9 +39,9 @@ class MainSettings extends StatelessWidget {
                 direction: Axis.vertical,
                 spacing: 12.0,
                 children: [
-                  SettingItem(title: 'Contest', content: _ContestSettings()),
-                  SettingItem(title: 'Station', content: _StationSettings()),
-                  SettingItem(title: 'Options', content: OptionsSetting()),
+                  SettingItem(title: 'Yarışma', content: _ContestSettings()),
+                  SettingItem(title: 'İstasyon', content: _StationSettings()),
+                  SettingItem(title: 'Seçenekler', content: OptionsSetting()),
                 ],
               ),
             );
@@ -111,7 +111,7 @@ class _ContestSettingsState extends State<_ContestSettings> {
                 controller: _contestNameController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Name',
+                  labelText: 'İsim',
                   suffixIcon: Icon(Icons.arrow_drop_down),
                 ),
               ),
@@ -123,7 +123,7 @@ class _ContestSettingsState extends State<_ContestSettings> {
                 controller: _contestExchangeController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Exchange',
+                  labelText: 'Takasiye',
                 ),
               ),
             ),
@@ -189,7 +189,7 @@ class _StationSettingsState extends State<_StationSettings> {
                 ],
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Callsign',
+                  labelText: 'Çağrı İşareti',
                 ),
                 onChanged: (value) {
                   context.read<_StationSettingsCubit>().onCallSignChange(value);

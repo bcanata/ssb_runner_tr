@@ -39,9 +39,9 @@ class ScoreArea extends StatelessWidget {
                       spacing: 5,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Point', style: titleTextStyle),
-                        Text('Mult', style: titleTextStyle),
-                        Text('Score', style: titleTextStyle),
+                        Text('Puan', style: titleTextStyle),
+                        Text('Çarp', style: titleTextStyle),
+                        Text('Skor', style: titleTextStyle),
                       ],
                     ),
                   ),
@@ -113,14 +113,14 @@ class ScoreArea extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Raw',
+                      'Ham',
                       style: titleTextStyle,
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      'Verified',
+                      'Doğrulanmış',
                       style: titleTextStyle,
                       textAlign: TextAlign.center,
                     ),

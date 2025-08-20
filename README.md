@@ -2,21 +2,21 @@
 
 ![logo](img/logo_128.png)
 
-SSB Contest Listening and Training Software
+SSB Yarışma Dinleme ve Eğitim Yazılımı
 
-inspired by [MorseRunner](https://github.com/w7sst/MorseRunner)
+[MorseRunner](https://github.com/w7sst/MorseRunner)'dan esinlenmiştir
 
-## Downloads
+## İndirmeler
 
-Please visit our [website](https://ssbrunner.com/) 
+Lütfen [web sitemizi](https://ssbrunner.com/) ziyaret edin 
 
-or download release from [Releases Page](https://github.com/SSBContestRunner/ssb_runner/releases) in GitHub
+veya GitHub'daki [Sürümler Sayfası](https://github.com/SSBContestRunner/ssb_runner/releases)'ndan sürümü indirin
 
-## If you encounter crash
+## Çökme ile karşılaşırsanız
 
 <img src="img/crash_dialog.png" alt="Crash Dialog" width="1000"/>
 
-If you see the crash dialog, click **Accept**, there will be a log file in the following directory.
+Çökme iletişim kutusunu görürseniz, **Kabul Et**'e tıklayın, aşağıdaki dizinde bir günlük dosyası olacaktır.
 
 Windows: `%USERPROFILE%\Documents\ssb_runner\log`
 
@@ -24,4 +24,4 @@ macOS: `~/Documents/ssb_runner/log`
 
 Linux: `~/Documents/ssb_runner/log`
 
-Please [open an issue](https://github.com/SSBContestRunner/ssb_runner/issues/new) and attach the log file to it.
+Lütfen [bir sorun açın](https://github.com/SSBContestRunner/ssb_runner/issues/new) ve günlük dosyasını ekleyin.
