@@ -187,7 +187,7 @@ class _QsoInputAreaState extends State<_QsoInputArea> {
                     ],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Call',
+                      labelText: 'Çağrı',
                     ),
                     onChanged: (value) {
                       context.read<QsoOperationAreaCubit>().onCallInput(value);
@@ -220,7 +220,7 @@ class _QsoInputAreaState extends State<_QsoInputArea> {
                     ],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Exchange',
+                      labelText: 'Takasiye',
                     ),
                     onChanged: (value) {
                       context.read<QsoOperationAreaCubit>().onExchangeInput(

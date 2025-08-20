@@ -41,7 +41,7 @@ class _OptionsSettingCubit extends Cubit<_Options> {
 
     if (durationInMinutes > maxDurationInMinutesPerRun) {
       toastification.show(
-        title: Text('Max duration is $maxDurationInMinutesPerRun minutes'),
+        title: Text('Maksimum süre $maxDurationInMinutesPerRun dakikadır'),
         autoCloseDuration: Duration(seconds: 2),
         type: ToastificationType.warning,
         style: ToastificationStyle.fillColored,
@@ -89,7 +89,7 @@ class _OptionsSettingState extends State<OptionsSetting> {
                 readOnly: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Mode',
+                  labelText: 'Mod',
                   suffixIcon: Icon(Icons.arrow_drop_down),
                 ),
               ),
@@ -102,8 +102,8 @@ class _OptionsSettingState extends State<OptionsSetting> {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Duration',
-                  suffix: Text('min'),
+                  labelText: 'Süre',
+                  suffix: Text('dk'),
                 ),
               ),
             ],

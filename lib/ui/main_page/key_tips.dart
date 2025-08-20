@@ -58,7 +58,7 @@ class KeyTips extends StatelessWidget {
                           onPressed: () {
                             context.read<MainPageCubit>().hideKeyTips();
                           },
-                          child: Text('Close'),
+                          child: Text('Kapat'),
                         ),
                       ],
                     ),
@@ -93,11 +93,11 @@ class KeyTips extends StatelessWidget {
   List<Widget> _descriptions() {
     final textStyle = TextStyle(fontSize: 14, color: Colors.black);
     return [
-      Text('move cursor to next input', style: textStyle),
-      Text('move cursor to previous input', style: textStyle),
-      Text('toggle between CALL and Exchange', style: textStyle),
-      Text('send his call and exchange (F2 + F5)', style: textStyle),
-      Text('submit your record', style: textStyle),
+      Text('imleci sonraki girdiye taşı', style: textStyle),
+      Text('imleci önceki girdiye taşı', style: textStyle),
+      Text('ÇAĞRI ve Takasiye arasında geçiş yap', style: textStyle),
+      Text('onun çağrısını ve takasiyesini gönder (F2 + F5)', style: textStyle),
+      Text('kaydınızı gönderin', style: textStyle),
     ];
   }
 }
